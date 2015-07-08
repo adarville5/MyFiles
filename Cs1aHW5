@@ -1,0 +1,98 @@
+/*************************************************************************
+ * AURTHOR      : Andre
+ * STUDENT ID   : 938387
+ * HW#5         : NEW SALARY
+ * CLASS		: CS1A
+ * SECTION		: MTWTh: 2pm
+ * DUE DATE		: 6/24/2016
+ *************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+
+using namespace std;
+
+
+int main()
+{
+	/*********************************************************************
+	* CONSTANTS
+	* -------------------------------------------------------------------
+	* USED FOR CLASS HEADING - ALL WILL BE OUTPUT
+	* -------------------------------------------------------------------
+	* PROGRAMMER : Andre, Franciso
+	* CLASS	 : CS1A
+	* SECTION	 : MTWTh: 2pm
+	* LAB_NUM	 : HW#5
+	* LAB_NAME   : selection
+	*********************************************************************/
+	const char PROGRAMMER[30] = "Andre";
+	const char CLASS[5]       = "CS1A";
+	const char SECTION[25]    = "MTWth: 2:00p - 7:30p";
+	const int  LAB_NUM        = 17;
+	const char LAB_NAME[17]   ="Selection";
+
+
+	// variable declarations go there
+	char fullName[30];				//employees full name
+	float currentAnnualSalary;		//current annual salary
+	float percentIncrease;			// expect salary percent increase
+	float newSalary;				// salary after pay increase
+	float monthlySalary;			// new salary/12
+	float retroActivePay;			// owed pay from jan/july
+
+	// OUTPUT - Class Heading
+	cout << left;
+	cout << "**************************************************";
+	cout << "\n* PROGRAMMED BY: " << PROGRAMMER;
+	cout << "\n*" << setw(14) << "CLASS" << ":" << CLASS;
+	cout << "\n*" << setw(14) << "SECTION" << ":" << SECTION;
+	cout << "\n*LAB #" << setw(9) << "LABNUM" << ":" << LAB_NAME;
+	cout << "\n****************************************************\n\n";
+	cout << right;
+
+/*************************************************************************
+ * Inputting the current salary and multiplying the amount by the
+ * percent of pay increase will give us the new salary amount. Allowing
+ * us to figure out the new monthly salary and the retroactive pay amount
+ *
+ ************************************************************************/
+
+	while(1)
+	{
+		cout << setw(30)<<left<<"What is your name? ";
+		cin.getline(fullName, 30);
+		cout << setw (30)<<left<< "What is your Current Salary? ";
+		cin >> currentAnnualSalary;
+		cin.ignore();
+		cout << setw(30)<<left<< "What is your pay increase?";
+		cin >> percentIncrease;
+		cin.ignore();
+		cout<<endl;
+		cout<<right;
+
+		// PROCESSING - determining the new values, such as new salary
+		// monthly salary, retroactivePay.
+	newSalary=((currentAnnualSalary*percentIncrease)+currentAnnualSalary);
+		monthlySalary = (newSalary/12);
+		retroActivePay = (((currentAnnualSalary*percentIncrease)/12)*6);
+
+
+
+
+		/* OUTPUT - Here we are outputting the new salary information to
+		* users. so they know there new salary, new monthly pay, and
+		* how much they are owed. */
+
+		cout<<fullName<<"SALARY INFORMATION"<<endl;
+		cout<<"New Salary"<<setw(19)<<"Monthly Salary"<<setw(20);
+		cout<<"Retroactive Pay"<<endl;
+
+		cout<<setprecision(2)<<fixed<<newSalary<<setw(19)
+		    <<monthlySalary<<setw(20) <<retroActivePay;
+		cout<<endl<<endl<<endl;
+	}
+
+		return 0;
+}
