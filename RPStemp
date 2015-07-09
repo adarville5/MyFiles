@@ -1,0 +1,98 @@
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
+using namespace std;
+
+void printrock(){
+
+	cout << "  .----.-----.-----.-----.          "  << endl;
+	cout << " /      \\     \\     \\     \\     "  << endl;
+	cout << "|  \\/    |     |   __L_____L__     "  << endl;
+	cout << "|   |    |     |  (           \\    "  << endl;
+	cout << "|    \\___/    /    \\______/    |  "  << endl;
+	cout << "|        \\___/\\___/\\___/      |  "  << endl;
+	cout << " \\      \\     /               /   "  << endl;
+	cout << "  |                        __/      "  << endl;
+	cout << "   \\_                   __/        "  << endl;
+	cout << "    |        |         |            "  << endl;
+	cout << "    |                  |            "  << endl;
+	cout << "    |                  |            "  << endl;
+
+}
+
+void printpaper(){
+
+	  cout << "    .-.      " << endl
+			<< "  | | | |    " << endl
+			<< ".-| | | |    " << endl
+			<< "| | | | |    " << endl
+			<< "| | | | |-.  " << endl
+			<< "| '     | |  " << endl
+			<< "|       | |  " << endl
+			<< "|         |  " << endl
+			<< "\\         / " << endl
+			<< " |       |   " << endl
+			<< " |       |   " << endl;
+
+}
+
+void printscissor(){
+
+	cout << "          _ " << endl;
+	cout << " _       /<)" << endl;
+	cout << "(>\\     / /" << endl;
+	cout << " \\ \\   / / "  << endl;
+	cout << "  \\ \\ / /   "  << endl;
+	cout << "   \\ V / Y-. "  << endl;
+	cout << "  /|     ` | " << endl;
+	cout << " | |       |" << endl;
+	cout << " |         |" << endl;
+	cout << " \\         /" << endl;
+	cout << " |        |"  << endl;
+	cout << " |        |"  << endl;
+
+}
+void print(int comp,int user){
+	cout << "Computer Plays - ";
+	if (comp == 1){
+		cout << "Rock!\n";
+		printrock();
+	}
+	else if (comp == 2){
+		cout << "Paper!\n";
+		printpaper();
+	}
+	else if (comp == 3){
+		cout << "Scissor!\n";
+		printscissor();
+	}
+	cout << endl << endl;
+
+	cout << "User Plays - ";
+	if (user == 1){
+		cout << "Rock!\n";
+		printrock();
+	}
+	else if (user == 2){
+		cout << "Paper!\n";
+		printpaper();
+	}
+	else if (user == 3){
+		cout << "Scissor!\n";
+		printscissor();
+	}
+	cout << endl << endl;
+
+}
+int main(){
+
+	int a;
+	int b;
+	int i;
+	int n;
+	char user;
+	srand (time(NULL));
+	cin >> a >> b;
+	print(a,b);
+
+}
