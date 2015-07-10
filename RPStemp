@@ -1,8 +1,9 @@
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
+#include <string>
+#include <math.h>
 using namespace std;
-
 void printrock(){
 
 	cout << "  .----.-----.-----.-----.          "  << endl;
@@ -52,38 +53,118 @@ void printscissor(){
 	cout << " |        |"  << endl;
 
 }
+
 void print(int comp,int user){
 	cout << "Computer Plays - ";
-	if (comp == 1){
+	if (comp == 0){
 		cout << "Rock!\n";
 		printrock();
 	}
-	else if (comp == 2){
+	else if (comp == 1){
 		cout << "Paper!\n";
 		printpaper();
 	}
-	else if (comp == 3){
+	else if (comp == 2){
 		cout << "Scissor!\n";
 		printscissor();
 	}
 	cout << endl << endl;
 
 	cout << "User Plays - ";
-	if (user == 1){
+	if (user == 0){
 		cout << "Rock!\n";
 		printrock();
 	}
-	else if (user == 2){
+	else if (user == 1){
 		cout << "Paper!\n";
 		printpaper();
 	}
-	else if (user == 3){
+	else if (user == 2){
 		cout << "Scissor!\n";
 		printscissor();
 	}
 	cout << endl << endl;
 
 }
+
+void GetInput(string& name, int& round){
+	cout << "Enter Player's Name : ";
+	cin  >> name;
+	cin.ignore(100,'\n');
+	cout << "Enter Number of Rounds in Match : " ;
+	cin >> round;
+}
+
+void VailidatePlay(){
+
+	cout << "**********************" << endl
+		<< "** CHOOSE YOUR PLAY **" << endl
+		<< "**********************" << endl;
+	cout << "R - Rock"    << endl
+		<< "P - Paper"   << endl
+		<< "S - Scissor" << endl;
+	cout << "Enter your play : ";
+}
+
+int inputNconvert(){
+
+	char input;
+
+	cin.get(input);
+	cin.ignore(100,'\n');
+	switch(input){
+			case 'r':
+			case 'R': return 0;
+			case 'p':
+			case 'P': return 1;
+			case 's':
+			case 'S': return 2;
+		}
+}
+
+int GetComputerPlay(){
+	return rand()%3;
+}
+
+bool CheckWin(int user, int comp, int& numWin, int& totMatch){
+	if (user - comp == 1 || (comp - user == 2)){
+		numWin++;
+		totMatch++;
+		return true;
+	}
+	else{
+		totMatch++;
+		return false;
+	}
+}
+
+void OutputWin(bool CheckWin, string name){
+	if (CheckWin){
+		cout << name << " WINS!!" << endl << endl << endl;
+	}
+	else {
+		cout << "Computer wins, better luck next time, " << name <<"!";
+		cout << endl << endl << endl;
+	}
+}
+
+void OutputMatchWinner(int numWin, int totMatch, string name){
+	int percent;
+	percent = round((numWin / float(totMatch))*100);
+	cout << "***********************************" << endl
+		<< "*********  FINAL RESULTS  *********" << endl
+		<< "***********************************" << endl << endl;
+	if (percent > 50){
+		cout << name << " is the WINNER, WINNER, CHICKEN DINNER!!" << endl;
+		cout << name << " won " << percent << "% of the time!" <<endl;
+	}
+	else{
+		cout << name << " loses, better luck next time!" << endl;
+		cout << name << " lose " << percent << "% of the time!" <<endl;
+	}
+
+}
+
 int main(){
 
 	int a;
@@ -91,8 +172,9 @@ int main(){
 	int i;
 	int n;
 	char user;
-	srand (time(NULL));
+	srand(time(NULL));
 	cin >> a >> b;
 	print(a,b);
+
 
 }
